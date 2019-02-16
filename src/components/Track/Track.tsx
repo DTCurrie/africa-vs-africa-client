@@ -52,7 +52,8 @@ export function Track(props: TrackProps): ReactElement {
     const [ error, setError ]: [ string, Dispatch<string> ] = useState(null);
 
     let url = `http://localhost:3000/api/track/${props.trackId}`;
-    if (process.env.NODE_ENV === "production") { url = `http://ava.devintcurrie.com/api/track/${props.trackId}`; }
+    console.log(process.env.NODE_ENV);
+    if (process.env.NODE_ENV === "production") { url = `https://ava.devintcurrie.com/api/track/${props.trackId}`; }
 
     function setData(data: Track = null, err: string = null): void {
         setTrack(data);
