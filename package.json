@@ -2,14 +2,14 @@
   "name": "africa-vs-africa-client",
   "version": "0.0.1",
   "description": "A simple React app that leverages the Spotify API to compare plays of \"Africa\" by Toto, and Weezer's \"Africa\"",
-  "homepage": "https://DTCurrie.github.io/africa-vs-africa-client",
+  "homepage": "https://dtcurrie.github.io/africa-vs-africa-client/",
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --hot --config webpack.dev.js",
     "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",
