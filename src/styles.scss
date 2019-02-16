@@ -1,0 +1,58 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+
+@import "bootstrap/scss/spinners";
+@import "bootstrap/scss/utilities";
+
+html,
+body {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    .loader {
+        display: flex;
+        flex: 0 1 auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-color: $light;
+
+        .spinner-grow {
+            width: 4rem;
+            height: 4rem;
+        }
+    }
+
+    #root {
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        .app {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            flex: 0 1 auto;
+            flex-direction: column;
+
+            .tracks {
+                display: flex;
+                width: 100%;
+                height: 100%;
+                flex: 0 1 auto;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}

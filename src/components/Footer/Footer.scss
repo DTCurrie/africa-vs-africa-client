@@ -1,0 +1,21 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+.footer {
+    display: flex;
+    flex: 0 1 auto;
+    justify-content: center;
+    padding: 2px 0;
+
+    a {
+        display: inline-block;
+        margin-top: -1px;
+
+        color: $dark;
+
+        @include hover() {
+            color: darken($dark, 5%);
+        }
+    }
+}

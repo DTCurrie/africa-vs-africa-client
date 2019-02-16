@@ -1,0 +1,9 @@
+{
+    "defaultSeverity": "error",
+    "extends": ["tslint:recommended", "tslint-react"],
+    "jsRules": {},
+    "rules": {
+        "max-line-length": [true, 140]
+    },
+    "rulesDirectory": []
+}
