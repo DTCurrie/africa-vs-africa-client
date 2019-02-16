@@ -1,6 +1,6 @@
 # Africa vs. Africa (Client)
 
-A simple React app that leverages the Spotify API to compare plays of "Africa" by Toto, and Weezer's "Africa". See it live at [here](https://dtcurrie.github.io/africa-vs-africa-client/).
+A simple React app that leverages the Spotify API to compare plays of "Africa" by Toto, and Weezer's "Africa". You can see it in action [here](https://dtcurrie.github.io/africa-vs-africa-client/).
 
 ## Description
 
