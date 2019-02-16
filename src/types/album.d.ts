@@ -1,11 +1,11 @@
-declare interface IAlbum {
+declare interface Album {
     id: string;
     album_type: "album" | "single" | "compilation";
-    artists: IArtist[];
+    artists: Artist[];
     available_markets: AvailableMarket[];
-    external_urls: IStringIndexedObject;
+    external_urls: StringMap;
     href: string;
-    images: IImage[];
+    images: Image[];
     name: string;
     release_date: string;
     release_date_precision: string;

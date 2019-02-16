@@ -1,6 +1,6 @@
-declare interface IArtist {
+declare interface Artist {
     id: string;
-    external_urls: IStringIndexedObject;
+    external_urls: StringMap;
     href: string;
     name: string;
     type: string;

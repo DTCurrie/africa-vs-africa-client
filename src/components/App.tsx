@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Dispatch, ReactElement, useEffect, useState } from "react";
+import { useEffect, useState, Dispatch, ReactElement } from "react";
 
 import { Footer } from "./Footer/Footer";
 import { Track } from "./Track/Track";
@@ -18,8 +18,8 @@ export function App(): ReactElement {
     return (
         <div className="app">
             <div className="tracks">
-                <Track key="toto" id="2374M0fQpWi3dLnB54qaLX" onLoaded={setTotoLoaded} />
-                <Track key="weezer" id="36Pim2ANczp82lCWIb8GHy" onLoaded={setWeezerLoaded} />
+                <Track artist="toto" trackId="2374M0fQpWi3dLnB54qaLX" onLoaded={setTotoLoaded} />
+                <Track artist="weezer" trackId="36Pim2ANczp82lCWIb8GHy" onLoaded={setWeezerLoaded} />
             </div>
             {totoLoaded && weezerLoaded && <Footer />}
         </div>);

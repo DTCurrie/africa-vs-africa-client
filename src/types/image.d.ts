@@ -1,4 +1,4 @@
-declare interface IImage {
+declare interface Image {
     height: number;
     url: string;
     width: number;

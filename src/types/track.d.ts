@@ -1,13 +1,13 @@
-declare interface ITrack {
+declare interface Track {
     id: string;
-    album: IAlbum;
-    artists: IArtist[];
+    album: Album;
+    artists: Artist[];
     available_markets: AvailableMarket[];
     disc_number: number;
     duration_ms: number;
     explicit: boolean;
-    external_ids: IStringIndexedObject;
-    external_urls: IStringIndexedObject;
+    external_ids: StringMap;
+    external_urls: StringMap;
     href: string;
     is_local: boolean;
     name: string;
