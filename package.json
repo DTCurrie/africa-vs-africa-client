@@ -1,6 +1,6 @@
 {
   "name": "africa-vs-africa-client",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "A simple React app that leverages the Spotify API to compare plays of \"Africa\" by Toto, and Weezer's \"Africa\"",
   "homepage": "https://dtcurrie.github.io/africa-vs-africa-client/",
   "main": "index.js",
