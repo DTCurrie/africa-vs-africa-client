@@ -7,6 +7,9 @@ import "./Footer.scss";
 export function Footer(): ReactElement {
     return (
         <div className="footer">
-            Why? How? Check it out on GitHub: <a href="#"><Octicon icon={MarkGithub} /></a>
+            Why? How? Check it out on GitHub:
+            <a href="https://github.com/DTCurrie/africa-vs-africa-client">
+                <Octicon icon={MarkGithub} size="small" verticalAlign="middle" />
+            </a>
         </div>);
 }
