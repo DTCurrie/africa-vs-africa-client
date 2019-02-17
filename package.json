@@ -30,6 +30,7 @@
     "@types/node": "^11.9.4",
     "@types/react": "^16.8.3",
     "@types/react-dom": "^16.8.2",
+    "autoprefixer": "^9.4.7",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^1.0.1",
     "compression-webpack-plugin": "^2.0.0",
@@ -60,6 +61,7 @@
     "map": false,
     "plugins": {
       "postcss-preset-env": {},
+      "autoprefixer": {},
       "cssnano": {}
     }
   }
