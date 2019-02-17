@@ -1,14 +1,13 @@
-import * as React from "react";
-import { useEffect, useState, Dispatch, ReactElement } from "react";
+import React, { Dispatch, ReactElement, useEffect, useState } from 'react';
 
-import "./Track.scss";
+import './Track.scss';
 
-interface TrackProps { artist: string; trackId: string; onLoaded: (loaded: boolean) => void; }
+interface TrackProps { artist: string; trackId: string; onLoaded(loaded: boolean): void; }
 interface Translate { transform: string; }
 
 function TrackError(props: { error: string }): ReactElement {
     if (!props.error) { return null; }
-    return <div className="track-error">{props.error}</div>;
+    return <div className='track-error'>{props.error}</div>;
 }
 
 function TrackContent(props: { track: Track }): ReactElement {
@@ -34,9 +33,9 @@ function TrackContent(props: { track: Track }): ReactElement {
     });
 
     return (
-        <div className="track-content">
-            <div className="track-popularity" style={translate}>
-                <div className="track-info">
+        <div className='track-content'>
+            <div className='track-popularity' style={translate}>
+                <div className='track-info'>
                     <a href={track.external_urls.spotify}>{track.name}</a> by
                     <a href={artist.external_urls.spotify}> {track.artists[ 0 ].name}</a> from the album
                     <a href={album.external_urls.spotify}> {album.name}</a>
@@ -48,13 +47,13 @@ function TrackContent(props: { track: Track }): ReactElement {
 }
 
 export function Track(props: TrackProps): ReactElement {
-    const [ track, setTrack ]: [ Track, Dispatch<Track> ] = useState(null);
-    const [ error, setError ]: [ string, Dispatch<string> ] = useState(null);
+    const [ track, setTrack ]: [ Track, Dispatch<Track> ] = useState(undefined);
+    const [ error, setError ]: [ string, Dispatch<string> ] = useState(undefined);
 
     let url = `http://localhost:3000/api/track/${props.trackId}`;
-    if (process.env.NODE_ENV === "production") { url = `https://ava.devintcurrie.com/api/track/${props.trackId}`; }
+    if (process.env.NODE_ENV === 'production') { url = `https://ava.devintcurrie.com/api/track/${props.trackId}`; }
 
-    function setData(data: Track = null, err: string = null): void {
+    function setData(data?: Track, err?: string): void {
         setTrack(data);
         setError(err);
     }
@@ -62,17 +61,17 @@ export function Track(props: TrackProps): ReactElement {
     useEffect(() => {
         fetch(url)
             .then((response: Response) => response.json()
-                .then((data: { body: Track }) => setData(data.body, null))
-                .catch((err: string) => setData(null, err)))
+                .then((data: { body: Track }) => setData(data.body, undefined))
+                .catch((err: string) => setData(undefined, err)))
             .catch((err: string) => setError(err));
     }, [ props.trackId ]);
 
-    if (track === null && error === null) { return null; }
+    if (track === undefined && error === undefined) { return null; }
 
     props.onLoaded(true);
 
     const trackImage = {
-        backgroundImage: `url(${track.album.images[ 0 ].url})`,
+        backgroundImage: `url(${track.album.images[ 0 ].url})`
     };
 
     return (

@@ -1,13 +1,15 @@
 const path = require('path');
+
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
     entry: {
-        main: ['./src/index.tsx'],
-        vendor: ['./src/vendor.ts'],
+        main: ['./src/Index.tsx'],
+        polyfill: ['./src/polyfill.ts'],
         styles: ['./src/styles.scss']
     },
     output: {
@@ -60,11 +62,22 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),
+        new CopyWebpackPlugin([{
+            from: 'src/static',
+            to: 'static'
+        }]),
+        new CopyWebpackPlugin([{
+            from: 'src/browserconfig.xml',
+            to: 'browserconfig.xml'
+        }]),
+        new CopyWebpackPlugin([{
+            from: 'src/manifest.json',
+            to: 'manifest.json'
+        }]),
         new ForkTsCheckerWebpackPlugin({
             checkSyntacticErrors: true
         }),
         new HtmlWebpackPlugin({
-            title: "Africa vs. Africa",
             template: path.join(__dirname, 'src', 'index.html')
         })
     ]
