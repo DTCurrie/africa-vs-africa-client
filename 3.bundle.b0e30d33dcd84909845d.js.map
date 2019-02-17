@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/vendor.ts"],"names":["__webpack_require__","r","__webpack_exports__"],"mappings":"kIAAAA,EAAAC,EAAAC,GAAAF,EAAA","file":"3.bundle.b0e30d33dcd84909845d.js","sourcesContent":["import \"@babel/polyfill\";\n"],"sourceRoot":""}
