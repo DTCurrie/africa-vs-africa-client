@@ -1,5 +1,8 @@
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
     entry: {
@@ -10,6 +13,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.[hash].js',
+        chunkFilename: '[name].chunk.[hash].js'
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json"],
@@ -22,38 +26,32 @@ module.exports = {
         rules: [{
             test: /\.tsx?$/,
             exclude: /node_modules/,
-            loader: "babel-loader",
-            options: {
-                cacheDirectory: true,
-                babelrc: false,
-                presets: [
-                    [
-                        "@babel/preset-env",
-                        {
-                            targets: {
-                                node: "current",
-                                browsers: "last 2 versions"
-                            }
-                        }
-                    ],
-                    "@babel/preset-typescript",
-                    "@babel/preset-react"
-                ],
-                plugins: [
-                    ["@babel/plugin-proposal-class-properties", {
-                        loose: true
-                    }],
-                    "react-hot-loader/babel"
-                ]
-            }
-        }, {
-            test: /\.scss$/,
-            use: ["style-loader", "css-loader", {
-                loader: "sass-loader",
+            use: [{
+                loader: "babel-loader",
                 options: {
-                    includePaths: [path.join(__dirname, "node_modules")]
+                    cacheDirectory: true,
+                    babelrc: false,
+                    presets: [
+                        [
+                            "@babel/preset-env",
+                            {
+                                targets: {
+                                    node: "current",
+                                    browsers: "last 2 versions"
+                                }
+                            }
+                        ],
+                        "@babel/preset-typescript",
+                        "@babel/preset-react"
+                    ],
+                    plugins: [
+                        ["@babel/plugin-proposal-class-properties", {
+                            loose: true
+                        }],
+                        "react-hot-loader/babel"
+                    ]
                 }
-            }]
+            }, "tslint-loader"],
         }, {
             enforce: "pre",
             test: /\.js$/,
@@ -61,6 +59,10 @@ module.exports = {
         }]
     },
     plugins: [
+        new CleanWebpackPlugin(['dist']),
+        new ForkTsCheckerWebpackPlugin({
+            checkSyntacticErrors: true
+        }),
         new HtmlWebpackPlugin({
             title: "Africa vs. Africa",
             template: path.join(__dirname, 'src', 'index.html')

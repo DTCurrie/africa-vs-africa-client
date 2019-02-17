@@ -7,7 +7,8 @@ module.exports = merge(common, {
     devtool: 'inline-source-map',
     optimization: {
         splitChunks: {
-            chunks: 'all',
+            chunks: 'async',
+            name: true,
             cacheGroups: {
                 commons: {
                     name: 'commons',
@@ -17,9 +18,7 @@ module.exports = merge(common, {
             }
         },
         minimize: true,
-        runtimeChunk: {
-            name: 'runtime'
-        },
+        runtimeChunk: 'single',
         moduleIds: 'named',
         nodeEnv: 'development',
         mangleWasmImports: false,
@@ -29,5 +28,27 @@ module.exports = merge(common, {
         concatenateModules: true,
         sideEffects: true,
         portableRecords: true
+    },
+    module: {
+        rules: [{
+            test: /\.scss$/,
+            use: [
+                "style-loader",
+                {
+                    loader: "css-loader",
+                    options: {
+                        importLoaders: 2
+                    }
+                },
+                "postcss-loader",
+                {
+                    loader: "sass-loader",
+                    options: {
+                        includePaths: [path.join(__dirname, "node_modules")],
+                        workerParallelJobs: 2
+                    }
+                }
+            ]
+        }]
     }
 });
